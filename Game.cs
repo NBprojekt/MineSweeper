@@ -99,7 +99,17 @@ namespace MineSweeper {
 
             // Set flag and reval the value
             if (mouse.Button.ToString().Equals("Right")) {
-                selectedLabel.Flag = !selectedLabel.Flag; 
+                if (!selectedLabel.Flag)
+                    selectedLabel.Flag = true;
+                else if (selectedLabel.Bomb) {
+                    selectedLabel.Flag = false;
+                    for (int i = 0; i < labels.GetLength(0); i++) {
+                        for (int j = 0; j < labels.GetLength(1); j++) {
+                            labels[i, j].revealAll();
+                            labels[i, j].MouseClick -= mouseClick;
+                        }
+                    }
+                }
             } else if (selectedLabel.Bomb) { 
                 for (int i = 0; i < labels.GetLength(0); i++) {
                     for (int j = 0; j < labels.GetLength(1); j++) {
@@ -107,13 +117,11 @@ namespace MineSweeper {
                         labels[i, j].MouseClick -= mouseClick;
                     }
                 }
-            }
+            }  
             selectedLabel.selectLab();
             if (!selectedLabel.Flag)  
                 points += (int)(selectedLabel.Value * 1.6);
-            if (selectedLabel.Flag)   selectedLabel.MouseClick += mouseClick; 
-            Size = new Size(Size.Width, Size.Height - 1); 
-            Size = new Size(Size.Width, Size.Height + 1); 
+            if (selectedLabel.Flag) selectedLabel.MouseClick += mouseClick;  
         } 
         private void setBombs(int countBombs) { 
             int setBombs = 1;
@@ -148,7 +156,10 @@ namespace MineSweeper {
         }
         private void Update(object sender, EventArgs mouse) {
             checkNext();
-            if (!won) checkWin();
+            if (!won) {
+                checkWin();
+                updatePoints();
+            }
         }
         private void checkNext() {
             foreach (MsLabel label in labels) {
@@ -159,10 +170,25 @@ namespace MineSweeper {
                         int y = label.Y + j;
                         if (x < 0 || x > labels.GetLength(0) -1 || y < 0 || y > labels.GetLength(1) -1 ||
                             labels[x, y].Flag || labels[x, y].Bomb) continue;
-                        labels[x, y].Text = labels[x, y].Value.ToString();
+                        labels[x, y].Text = labels[x, y].Value.ToString(); 
                     }
                 }
             }
+        }
+        private void updateGraphics() { 
+            Size = new Size(Size.Width, Size.Height - 1);
+            Size = new Size(Size.Width, Size.Height + 1);
+        }
+        private void updatePoints() {
+            int oldPoints = points;
+            points = 0;
+            foreach (MsLabel lab in labels) {
+                try {
+                    points += Convert.ToInt32(lab.Text);
+                } catch (Exception e) { }
+            }
+            if (points != oldPoints)
+                updateGraphics();
         }
         private void checkWin() {
             foreach (MsLabel label in labels) { if (!label.Flag && label.Bomb) { return; } } 

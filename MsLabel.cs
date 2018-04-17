@@ -79,7 +79,7 @@ namespace MineSweeper {
         }
         private void bgUpdate (object sender, EventArgs e) {
             Image = null;
-            Text = "noob";
+            Text = "lost";
             ForeColor = Color.Red;
             timer.Stop(); 
         } 
