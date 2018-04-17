@@ -22,7 +22,8 @@ namespace MineSweeper {
             ForeColor = Color.White;
             BorderStyle = BorderStyle.FixedSingle;
             TextAlign = ContentAlignment.MiddleCenter;
-            BackColor = Color.DarkGray; 
+            BackColor = Color.DarkGray;
+            Text = "";
             value = 0;
 
             timer = new Timer();
@@ -65,9 +66,10 @@ namespace MineSweeper {
             else if (bomb) {
                 Image = global::MineSweeper.Properties.Resources.explosion;
                 timer.Start();
-            }
-            else
+            } else {
                 Text = value.ToString();  
+                Image = null;
+            }
         }
         public void revealAll() {
             if (bomb) 
@@ -78,8 +80,9 @@ namespace MineSweeper {
         private void bgUpdate (object sender, EventArgs e) {
             Image = null;
             Text = "noob";
-            timer.Stop();
-        }
+            ForeColor = Color.Red;
+            timer.Stop(); 
+        } 
         #endregion
     }
 }

@@ -17,3 +17,15 @@ F:\ITA3\MineSweeper\obj\Debug\MineSweeper.csproj.GenerateResource.cache
 F:\ITA3\MineSweeper\obj\Debug\MineSweeper.csproj.CoreCompileInputs.cache
 F:\ITA3\MineSweeper\obj\Debug\MineSweeper.exe
 F:\ITA3\MineSweeper\obj\Debug\MineSweeper.pdb
+H:\PRG\MineSweeper\obj\Debug\MineSweeper.Loadscreen.resources
+X:\ITA3\MineSweeper\bin\Debug\MineSweeper.exe.config
+X:\ITA3\MineSweeper\obj\Debug\MineSweeper.exe
+X:\ITA3\MineSweeper\obj\Debug\MineSweeper.pdb
+X:\ITA3\MineSweeper\bin\Debug\MineSweeper.exe
+X:\ITA3\MineSweeper\bin\Debug\MineSweeper.pdb
+X:\ITA3\MineSweeper\obj\Debug\MineSweeper.csprojResolveAssemblyReference.cache
+X:\ITA3\MineSweeper\obj\Debug\MineSweeper.Game.resources
+X:\ITA3\MineSweeper\obj\Debug\MineSweeper.Loadscreen.resources
+X:\ITA3\MineSweeper\obj\Debug\MineSweeper.Properties.Resources.resources
+X:\ITA3\MineSweeper\obj\Debug\MineSweeper.csproj.GenerateResource.Cache
+F:\ITA3\MineSweeper\obj\Debug\MineSweeper.Loadscreen.resources
